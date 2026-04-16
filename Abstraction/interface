@@ -1,0 +1,36 @@
+package Excel_practise;
+
+
+interface OTP{
+	
+	abstract public void SendOTP(int otp);
+}
+class Email implements OTP{
+	
+	public void SendOTP(int otp)
+	{
+		System.out.println("Email send OTP"+" "+otp);
+	}
+}
+class Phone implements OTP{
+	
+	public void SendOTP(int otp)
+	{
+		System.out.println("Phone send OTP"+" "+otp);
+	}
+}
+	
+
+public class Day3_interface {
+	public static void main(String[] args) {
+		
+		Email e=new Email();
+		e.SendOTP(123);
+		
+		System.out.println("=======================");
+		
+		Phone p=new Phone();
+		p.SendOTP(456);
+		
+		
+}}
