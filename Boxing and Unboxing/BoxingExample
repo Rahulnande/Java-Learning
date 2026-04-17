@@ -1,0 +1,21 @@
+package Excel_practise;
+
+import java.util.ArrayList;
+
+public class BoxingExample {
+	public static void main(String[] args) {
+		
+		ArrayList<Integer> list=new ArrayList<Integer>();
+		
+		//boxing
+		list.add(10);
+		list.add(20);
+		list.add(30);
+		
+		//un-boxing
+		for (int integer : list) {
+			System.out.println(integer);
+		}
+	}
+
+}
