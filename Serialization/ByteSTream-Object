@@ -1,0 +1,21 @@
+package Excel_practise;
+
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
+
+public class Deserialize {
+	public static void main(String[] args)throws Exception {
+		
+		FileInputStream fis= new FileInputStream("SendObject.txt");
+		ObjectInputStream ois=new ObjectInputStream(fis);
+		
+		SendObject s=(SendObject)ois.readObject();
+		ois.close();
+		fis.close();
+		
+		System.out.println(s.Name + " : " + s.Salary);
+		
+	}
+
+
+}
