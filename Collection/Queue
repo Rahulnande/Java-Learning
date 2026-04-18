@@ -1,0 +1,27 @@
+package Collection;
+
+import java.util.LinkedList;
+
+public class prac2_queue {
+	public static void main(String[] args) {
+		LinkedList l=new LinkedList();
+		l.offer("rahul");
+		l.offer(1);
+		l.offer(null);
+		l.offer(1);
+		
+		//add element
+		System.out.println(l);
+		
+		//get first element
+		System.out.println(l.peek());
+		
+		//remove first element
+		System.out.println(l.poll());
+		System.out.println(l);
+		
+	}
+
+	
+
+}
