@@ -1,0 +1,42 @@
+package Collection;
+
+import java.util.LinkedList;
+
+public class LinkedListExample {
+	public static void main(String[] args) {
+		LinkedList<String> list=new LinkedList<String>();
+		list.add("Rahul");
+		list.add("kajal");
+		list.add("akash");
+		list.add("aman");
+		
+		System.out.println(list);
+		
+		// Add at first and last
+		
+		list.addFirst("nande");
+		list.addLast("End");
+		
+
+        System.out.println("After addFirst & addLast: " + list);
+        
+     // Remove element
+        list.remove("kajal");
+        
+        System.out.println("After removing Amit: " + list);
+        
+        // Get element
+        System.out.println("First Element: " + list.getFirst());
+        System.out.println("Last Element: " + list.getLast());
+
+        // Iterate
+        System.out.println("All Elements:");
+        for (String name : list) {
+            System.out.println(name);
+        }
+        
+	}
+	
+	
+
+}
