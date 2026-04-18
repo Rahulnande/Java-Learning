@@ -1,0 +1,62 @@
+package Collection;
+
+import java.util.*;
+
+public class SetExample {
+	public static void main(String[] args) {
+
+        // ===== HASHSET =====
+        System.out.println("---- HashSet ----");
+
+        Set<String> hashSet = new HashSet<>();
+
+        hashSet.add("Rahul");
+        hashSet.add("Amit");
+        hashSet.add("John");
+        hashSet.add("Rahul"); // duplicate
+
+        System.out.println("HashSet: " + hashSet);
+
+
+        // ===== LINKEDHASHSET =====
+        System.out.println("\n---- LinkedHashSet ----");
+
+        Set<String> linkedSet = new LinkedHashSet<>();
+
+        linkedSet.add("Rahul");
+        linkedSet.add("Amit");
+        linkedSet.add("John");
+        linkedSet.add("Rahul"); // duplicate
+
+        System.out.println("LinkedHashSet: " + linkedSet);
+
+
+        // ===== TREESET =====
+        System.out.println("\n---- TreeSet ----");
+
+        Set<String> treeSet = new TreeSet<>();
+
+        treeSet.add("Rahul");
+        treeSet.add("Amit");
+        treeSet.add("John");
+        treeSet.add("Rahul"); // duplicate
+
+        System.out.println("TreeSet: " + treeSet);
+
+
+        // ===== COMMON OPERATIONS =====
+        System.out.println("\n---- Common Operations ----");
+
+        System.out.println("Contains Rahul? " + hashSet.contains("Rahul"));
+        System.out.println("Size: " + hashSet.size());
+
+        hashSet.remove("Amit");
+        System.out.println("After removing Amit: " + hashSet);
+
+        // Iteration
+        System.out.println("\nIterating HashSet:");
+        for (String name : hashSet) {
+            System.out.println(name);
+        }
+	}
+}
