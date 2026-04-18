@@ -1,0 +1,39 @@
+package Excel_practise;
+
+import java.lang.reflect.*;
+class Boy{
+	private String name="Rahul";
+	 public void show() {
+	        System.out.println("Hello Rahul");
+	    }
+}
+public class ReflectionAPI {
+	public static void main(String[] args) throws Exception {
+		
+		//get class object
+		
+		 Class <?>cls = Class.forName("Excel_practise.Boy");
+		
+		 //Creates object without using new keyword
+		 
+		 Object obj=cls.getDeclaredConstructor().newInstance();
+		 
+		 // Finds method show() from class
+		 Method m=cls.getDeclaredMethod("show");
+		 
+		// Calls method dynamically
+	        m.invoke(obj);
+	        
+	     //Gets private variable name
+	        Field  f=cls.getDeclaredField("name");
+	        
+	        //Allows access to private field
+	        f.setAccessible(true);//break encapsulation
+	        
+	        System.out.println(f.get(obj));
+	        
+	        
+		
+	}
+
+}
