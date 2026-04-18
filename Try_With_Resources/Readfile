@@ -1,0 +1,25 @@
+package Excel_practise;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class Try_With_Resources {
+	public static void main(String[] args) throws FileNotFoundException, IOException {
+		try(BufferedReader bf=new BufferedReader(new FileReader ("Employee.txt")))
+		{
+			String line;
+//			System.out.println("Read the file");
+			while((line=bf.readLine())!=null)
+			{
+				System.out.println(line);
+			}
+		}
+		catch(Exception e)
+		{
+			System.out.println("File not find");
+		}
+	}
+
+}
