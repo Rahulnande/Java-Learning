@@ -1,0 +1,56 @@
+package Excel_practise;
+
+
+class Account{
+	String name;
+	Account(String name)
+	{
+		this.name=name;
+		
+	}
+	
+}
+
+public class DeadLock {
+	static void transfer(Account from,Account to,int amount) {
+		synchronized (from) {
+			System.out.println(Thread.currentThread().getName()+"Locked"+" "+from.name);
+		}
+		try {
+			Thread.sleep(2000);
+		}
+		catch (Exception e) {
+			System.out.println("Error");
+		}
+		synchronized (to) {
+			System.out.println(Thread.currentThread().getName()+"Locked"+" "+to.name);
+		}
+		try {
+			Thread.sleep(2000);
+		}
+		catch (Exception e) {
+			System.out.println("Error");
+		
+		}
+		
+	}
+	public static void main(String[] args) throws InterruptedException {
+		Account acc1=new Account("Rahul");
+		Account acc2=new Account("kajal");
+		
+		Thread t1=new Thread(()->{
+			transfer(acc1,acc2,100);
+		},"Thread-1");
+		
+		Thread t2=new Thread(()->{
+			transfer(acc2,acc1,200);
+		},"Thread-2");
+		
+		t1.start();
+		t1.join();
+		t2.start();
+	}
+
+	
+
+}
