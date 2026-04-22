@@ -1,0 +1,75 @@
+package practical;
+
+class bankaccounts {
+	int balance=1000;
+	
+	synchronized void withdraw(int amount)
+	{
+		if(balance>amount)
+		{
+			System.out.println("withdraw is in processing....Wait");
+			try {
+				Thread.sleep(3000);
+				System.out.println("Withdraw Successfully...."+" "+amount);
+			}
+			catch (Exception e) {
+				System.out.println("Server down");
+			}
+			balance-=amount;
+			System.out.println("Remaining balance is :- "+" "+balance);
+		}
+		else {
+			System.out.println("Insufficent balance.......");
+		}
+	}
+	synchronized void checkbalance(){
+		if(balance>0)
+		{
+			System.out.println("checkbalance is in processing....Wait");
+			try {
+				Thread.sleep(3000);
+				System.out.println(" your balance is :- "+" "+balance);
+			}
+			catch (Exception e) {
+				System.out.println("Server down");
+			}
+		}
+	}
+}
+
+
+public class practise {
+	public static void main(String[] args) throws Exception {
+		
+		bankaccounts bank=new bankaccounts();
+		
+		Thread t1=new Thread(()->{
+			bank.withdraw(200);
+			
+			
+		});
+	
+		
+		Thread t2=new Thread(()->{
+			
+			System.out.println("===check balance====");
+			try {
+				Thread.sleep(3000);
+				System.out.println(" wait for balance inquery ");
+			}
+			catch (Exception e) {
+				System.out.println("Server down");
+			}
+			bank.checkbalance();
+		});
+		
+		t1.start();
+		t1.join();
+		t2.start();
+		
+		
+    }
+
+  
+
+}
