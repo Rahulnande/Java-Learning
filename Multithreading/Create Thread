@@ -1,0 +1,28 @@
+package practical;
+
+class mytask extends Thread{
+	@Override
+	public void run() {
+		System.out.println("welcome to thread creation");
+	}
+}
+
+
+public class practise {
+	public static void main(String[] args) throws Exception {
+		
+		mytask task1=new mytask();
+		task1.start();
+		
+		//System.out.println("====Secound thread creating and executing======");
+		
+		mytask task2=new mytask();
+		task2.start();
+		
+		
+		
+    }
+
+  
+
+}
