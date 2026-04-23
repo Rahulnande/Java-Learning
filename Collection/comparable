@@ -1,0 +1,41 @@
+package Excel_practise;
+import java.util.*;
+
+class b2wemployee implements Comparable<b2wemployee>{
+	String name;
+	int salary;
+	
+	 b2wemployee(String name,int salary) {
+		this.name=name;
+		this.salary=salary;
+	}
+	 
+	 public int compareTo(b2wemployee e)
+	 {
+		 return (int)(this.salary-e.salary);
+	 }
+	 @Override
+	public String toString() {
+		
+		return  name + " " + salary;
+	}
+}
+public class comparable {
+	public static void main(String[] args) {
+		List<b2wemployee> list=new ArrayList<b2wemployee>();
+		
+		list.add(new b2wemployee("Rahul",2000));
+		list.add(new b2wemployee("Akash",1000));
+		list.add(new b2wemployee("khushi",500));
+		Collections.sort(list);
+		
+		System.out.println("Sort by Salary (Comparable):");
+		
+		for (b2wemployee b2wemployee : list) {
+			System.out.println(b2wemployee);
+		}
+		
+		
+	}
+
+}
