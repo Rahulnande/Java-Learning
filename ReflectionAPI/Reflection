@@ -1,39 +1,100 @@
-package Excel_practise;
+package practical;
 
+import practical.employee;
+
+import java.lang.reflect.Method;
+import java.util.concurrent.*;
 import java.lang.reflect.*;
-class Boy{
-	private String name="Rahul";
-	 public void show() {
-	        System.out.println("Hello Rahul");
-	    }
-}
-public class ReflectionAPI {
+
+
+public class practise {
 	public static void main(String[] args) throws Exception {
-		
-		//get class object
-		
-		 Class <?>cls = Class.forName("Excel_practise.Boy");
-		
-		 //Creates object without using new keyword
+		employee obj=new employee();
 		 
-		 Object obj=cls.getDeclaredConstructor().newInstance();
-		 
-		 // Finds method show() from class
-		 Method m=cls.getDeclaredMethod("show");
-		 
-		// Calls method dynamically
-	        m.invoke(obj);
-	        
-	     //Gets private variable name
-	        Field  f=cls.getDeclaredField("name");
-	        
-	        //Allows access to private field
-	        f.setAccessible(true);//break encapsulation
-	        
-	        System.out.println(f.get(obj));
-	        
-	        
+		Class c=Class.forName("practical.employee");
+		Class c1=employee.class;
+		Class c2=obj.getClass();
 		
-	}
+		System.out.println(c.getName());
+		System.out.println(c1.getName());
+		System.out.println(c2.getName());
+		
+		System.out.println("=============get method================");
+		///get method
+		
+		Method[] method=c1.getDeclaredMethods();
+	
+		
+		
+		for (Method method2 : method) {
+			System.out.println(method2.getName());
+		}	
+		
+		System.out.println();
+		Method[] getmethod=c2.getMethods();
+		
+		
+		for(Method method2: getmethod)
+		{
+			System.out.println(method2.getName());
+		}
+
+		System.out.println("============call method======================");
+		
+		Method callmethod=c1.getDeclaredMethod("run");
+		System.out.println(callmethod.invoke(obj));
+		
+		System.out.println("============call private variable======================");
+		Field[] f=c1.getDeclaredFields();
+		
+		for(Field feild:f)
+		{
+			System.out.println(feild.getName());
+		}
+		
+		System.out.println("============access private variable======================");
+		
+		Field f1=c1.getDeclaredField("name");
+		f1.setAccessible(true);
+		f1.set(obj, "Rahul nande");
+		System.out.println(f1.get(obj));
+		
+		System.out.println("============access private method======================");
+		Method privatemethod=c1.getDeclaredMethod("Display");
+		privatemethod.setAccessible(true);
+		privatemethod.invoke(obj);
+		
+		System.out.println("============call constructor======================");
+		
+		Constructor []constructor=c1.getDeclaredConstructors();
+		
+		for(Constructor constructor2:constructor)
+		{
+			System.out.println(constructor2.getName());
+		}
+		
+		System.out.println("============call private constructor======================");
+		
+		Constructor  privateconstructor=c1.getDeclaredConstructor(String.class);
+		privateconstructor.setAccessible(true);
+		Object object = privateconstructor.newInstance("employee");
 
 }
+}
+		
+		
+		
+	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	
+
