@@ -1,0 +1,63 @@
+package Excel_practise;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
+import practical.employee;
+
+class Employees {
+    int id;
+    String name;
+    double salary;
+
+    Employees(int id, String name, double salary) {
+        this.id = id;
+        this.name = name;
+        this.salary = salary;
+    }
+
+    public String toString() {
+        return id + " " + name + " " + salary;
+    }
+}
+
+class comparesalary implements Comparator<Employees>{
+
+
+	@Override
+	public int compare(Employees o1, Employees o2) {
+		
+		return (int)(o1.salary - o2.salary);
+	}
+}
+class comparename implements Comparator<Employees>
+{
+	public int compare(Employees e1, Employees e2)
+	{
+		return e1.name.compareTo(e2.name);
+	}
+	}
+public class comparator {
+	public static void main(String[] args) {
+		List<Employees> list=new ArrayList<Employees>();
+		list.add(new Employees(1, "rahul",1000));
+		list.add(new Employees(3, "akash",3000));
+		list.add(new Employees(2, "nande",500));
+		
+		
+		Collections.sort(list,new comparesalary());
+		System.out.println("Sort by Salary:");
+		for (Employees employee : list) {
+			System.out.println(employee);
+		}
+		
+		Collections.sort(list,new comparename());
+		System.out.println("\nSort by Name:");
+		for (Employees employee1 : list) {
+			System.out.println(employee1);
+		}
+	}
+
+}
